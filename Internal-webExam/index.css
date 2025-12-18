@@ -1,0 +1,77 @@
+/* Modern responsive stylesheet for Book Summary Page */
+/* Google font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:root{
+    --bg-gradient: linear-gradient(135deg,#f4fbff,#eef7ff);
+    --primary: #092A6F; /* preserved */
+    --accent: #0fd6d6;
+    --muted: #6b7280;
+    --card-bg: rgba(255,255,255,0.85);
+    --glass: rgba(255,255,255,0.6);
+    --shadow: 0 10px 30px rgba(2,6,23,0.08);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{height:100%}
+
+body{
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:var(--primary);
+    background:var(--bg-gradient);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+}
+
+.container{
+    max-width:1100px;
+    margin:48px auto;
+    padding:24px;
+}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
+nav .logo{font-weight:800;color:var(--primary);letter-spacing:0.4px}
+nav ul{display:flex;gap:18px;align-items:center;list-style:none}
+nav ul li{font-weight:600;cursor:pointer;padding:8px 12px;border-radius:8px;color:var(--primary);transition:all .18s ease}
+nav ul li:hover{background:rgba(9,42,111,0.06);transform:translateY(-2px)}
+
+/* Layout */
+.book-container{display:grid;grid-template-columns:320px 1fr;gap:32px;align-items:start;margin-top:28px}
+
+n.images{display:flex;justify-content:center;align-items:center}
+.images img{width:100%;max-width:320px;height:auto;border-radius:16px;box-shadow:0 12px 40px rgba(2,6,23,0.12);transition:transform .36s ease,box-shadow .36s ease}
+.images img:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 50px rgba(2,6,23,0.18)}
+
+.details{background:var(--card-bg);padding:22px;border-radius:12px;box-shadow:var(--shadow)}
+.book-name h2{font-size:1.6rem;margin-bottom:10px;color:var(--primary)}
+.about h2{font-size:1.05rem;margin-top:12px;color:var(--primary)}
+.about p{color:var(--muted);font-size:0.98rem;margin-top:10px;text-align:justify}
+
+/* Footer */
+footer{margin-top:36px;padding-top:22px;border-top:1px solid rgba(9,42,111,0.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
+.explorer ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+.explorer ul li{padding:8px 12px;border-radius:8px;transition:all .15s ease;cursor:pointer}
+.explorer ul li:hover{background:rgba(9,42,111,0.05)}
+
+/* Small screens */
+@media (max-width:900px){
+    .book-container{grid-template-columns:1fr}
+    nav ul{gap:10px}
+    .images img{max-width:280px}
+}
+
+@media (max-width:480px){
+    .container{padding:16px;margin:24px auto}
+    nav ul{display:none} /* simple mobile fallback: hide nav list */
+    nav{justify-content:center}
+    .images img{max-width:220px}
+    .details{padding:16px}
+    .book-name h2{font-size:1.2rem}
+}
+
+/* Accessibility & minor helpers */
+a:focus,button:focus{outline:2px dashed var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
